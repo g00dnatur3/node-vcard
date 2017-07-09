@@ -74,7 +74,7 @@ function vCard() {
 		errors = [];
 		vCardsParsed = [];
 		vCardCount = 0;
-		console.info('vCards: ', vCards);
+		//console.info('vCards: ', vCards);
 		for (i=0; i<vCards.length; ++i) {
 			validationError = this.getValidationError(vCards[i])
 			if (validationError) {
@@ -258,7 +258,7 @@ function vCard() {
 
 		/* Ensure at least the needed fields (VERSION, N and FN) exist, needed in all versions. */
 		for (var f = data.length-1; f >= 0; f--){
-			if (data[f].match(/^(VERSION|FN):/)) {
+			if (data[f].match(/^(VERSION|FN)/)) {
 				required_elements_found++;
 			}
 		}
@@ -272,7 +272,7 @@ function vCard() {
 		/* For version 3.0+, we'll also need an N field to be present. */
 		if (version > '2.1') {
 			for (var f = data.length-1; f >= 0; f--){
-				if (data[f].match(/^N:/)) {
+				if (data[f].match(/^N/)) {
 					required_elements_found++;
 				}
 			}
