@@ -44,6 +44,13 @@ function vCard() {
 		// newline because of Base64 PHOTOS.
 		data = card.split(/\r\n(?=\S)|\r(?=\S)|\n(?=\S)/);
 
+		for (var i=data.length-1; i>=0; i--) {
+			if (data[i].charAt(0) === '=') {
+				console.log('[vcard] Skipping invalid data: ' + data[i]);
+				data.splice(i, 1);
+			}
+		}
+		
 		// Support for multiple vcards into a file
 		// gmail exports the contacts like that:
 		// https://support.google.com/mail/answer/1069522?hl=en (export & backup)
